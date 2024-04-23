@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		0CC838942BD7B1FE00112453 /* HabitsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC838932BD7B1FE00112453 /* HabitsApp.swift */; };
-		0CC838962BD7B1FE00112453 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC838952BD7B1FE00112453 /* ContentView.swift */; };
+		0CC838962BD7B1FE00112453 /* MyDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC838952BD7B1FE00112453 /* MyDayView.swift */; };
 		0CC838982BD7B20100112453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CC838972BD7B20100112453 /* Assets.xcassets */; };
 		0CC8389B2BD7B20100112453 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CC8389A2BD7B20100112453 /* Preview Assets.xcassets */; };
 		0CC838A52BD7B20100112453 /* HabitsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC838A42BD7B20100112453 /* HabitsTests.swift */; };
 		0CC838AF2BD7B20100112453 /* HabitsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC838AE2BD7B20100112453 /* HabitsUITests.swift */; };
 		0CC838B12BD7B20100112453 /* HabitsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC838B02BD7B20100112453 /* HabitsUITestsLaunchTests.swift */; };
+		0CC838BF2BD7B28B00112453 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC838BE2BD7B28B00112453 /* Activity.swift */; };
+		0CC838C12BD7B29500112453 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC838C02BD7B29500112453 /* User.swift */; };
+		0CC838C52BD7B43400112453 /* MyDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC838C42BD7B43400112453 /* MyDayViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,7 @@
 /* Begin PBXFileReference section */
 		0CC838902BD7B1FE00112453 /* Habits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CC838932BD7B1FE00112453 /* HabitsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsApp.swift; sourceTree = "<group>"; };
-		0CC838952BD7B1FE00112453 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0CC838952BD7B1FE00112453 /* MyDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayView.swift; sourceTree = "<group>"; };
 		0CC838972BD7B20100112453 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CC8389A2BD7B20100112453 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0CC838A02BD7B20100112453 /* HabitsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +47,9 @@
 		0CC838AA2BD7B20100112453 /* HabitsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CC838AE2BD7B20100112453 /* HabitsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsUITests.swift; sourceTree = "<group>"; };
 		0CC838B02BD7B20100112453 /* HabitsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0CC838BE2BD7B28B00112453 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		0CC838C02BD7B29500112453 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0CC838C42BD7B43400112453 /* MyDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +101,9 @@
 			isa = PBXGroup;
 			children = (
 				0CC838932BD7B1FE00112453 /* HabitsApp.swift */,
-				0CC838952BD7B1FE00112453 /* ContentView.swift */,
+				0CC838C32BD7B2B500112453 /* Views */,
+				0CC838C22BD7B29B00112453 /* ViewModels */,
+				0CC838BD2BD7B27500112453 /* Models */,
 				0CC838972BD7B20100112453 /* Assets.xcassets */,
 				0CC838992BD7B20100112453 /* Preview Content */,
 			);
@@ -125,6 +133,31 @@
 				0CC838B02BD7B20100112453 /* HabitsUITestsLaunchTests.swift */,
 			);
 			path = HabitsUITests;
+			sourceTree = "<group>";
+		};
+		0CC838BD2BD7B27500112453 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0CC838BE2BD7B28B00112453 /* Activity.swift */,
+				0CC838C02BD7B29500112453 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0CC838C22BD7B29B00112453 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0CC838C42BD7B43400112453 /* MyDayViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0CC838C32BD7B2B500112453 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0CC838952BD7B1FE00112453 /* MyDayView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +290,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CC838962BD7B1FE00112453 /* ContentView.swift in Sources */,
+				0CC838C12BD7B29500112453 /* User.swift in Sources */,
+				0CC838BF2BD7B28B00112453 /* Activity.swift in Sources */,
+				0CC838962BD7B1FE00112453 /* MyDayView.swift in Sources */,
+				0CC838C52BD7B43400112453 /* MyDayViewModel.swift in Sources */,
 				0CC838942BD7B1FE00112453 /* HabitsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
