@@ -17,4 +17,5 @@ struct Activity: Identifiable {
     var repetitions : Double?
     var officeWorkout : Bool
     var repeating : Bool
+    var category : Category
 }

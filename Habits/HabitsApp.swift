@@ -11,7 +11,8 @@ import SwiftUI
 struct HabitsApp: App {
     var body: some Scene {
         WindowGroup {
-            MyDayView()
+            MainView()
+                
         }
     }
 }
