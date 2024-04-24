@@ -17,6 +17,13 @@
 		0CC838BF2BD7B28B00112453 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC838BE2BD7B28B00112453 /* Activity.swift */; };
 		0CC838C12BD7B29500112453 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC838C02BD7B29500112453 /* User.swift */; };
 		0CC838C52BD7B43400112453 /* MyDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC838C42BD7B43400112453 /* MyDayViewModel.swift */; };
+		0CC838C72BD7CAD400112453 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC838C62BD7CAD400112453 /* Badge.swift */; };
+		0CC838C92BD8E3EC00112453 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC838C82BD8E3EC00112453 /* Category.swift */; };
+		0CC838CB2BD8EA3F00112453 /* OfficeWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC838CA2BD8EA3F00112453 /* OfficeWorkout.swift */; };
+		0CC838CF2BD8EF3100112453 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC838CE2BD8EF3100112453 /* MainView.swift */; };
+		0CC838D12BD8EFAA00112453 /* ActiviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC838D02BD8EFAA00112453 /* ActiviesView.swift */; };
+		0CC838D72BD8F0E200112453 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC838D62BD8F0E200112453 /* CalendarView.swift */; };
+		0CC838D92BD8F0E800112453 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC838D82BD8F0E800112453 /* AccountView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +57,13 @@
 		0CC838BE2BD7B28B00112453 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		0CC838C02BD7B29500112453 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0CC838C42BD7B43400112453 /* MyDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayViewModel.swift; sourceTree = "<group>"; };
+		0CC838C62BD7CAD400112453 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
+		0CC838C82BD8E3EC00112453 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		0CC838CA2BD8EA3F00112453 /* OfficeWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeWorkout.swift; sourceTree = "<group>"; };
+		0CC838CE2BD8EF3100112453 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		0CC838D02BD8EFAA00112453 /* ActiviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiviesView.swift; sourceTree = "<group>"; };
+		0CC838D62BD8F0E200112453 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		0CC838D82BD8F0E800112453 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +153,10 @@
 			isa = PBXGroup;
 			children = (
 				0CC838BE2BD7B28B00112453 /* Activity.swift */,
+				0CC838C82BD8E3EC00112453 /* Category.swift */,
 				0CC838C02BD7B29500112453 /* User.swift */,
+				0CC838CA2BD8EA3F00112453 /* OfficeWorkout.swift */,
+				0CC838C62BD7CAD400112453 /* Badge.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -156,6 +173,10 @@
 			isa = PBXGroup;
 			children = (
 				0CC838952BD7B1FE00112453 /* MyDayView.swift */,
+				0CC838CE2BD8EF3100112453 /* MainView.swift */,
+				0CC838D62BD8F0E200112453 /* CalendarView.swift */,
+				0CC838D82BD8F0E800112453 /* AccountView.swift */,
+				0CC838D02BD8EFAA00112453 /* ActiviesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -290,11 +311,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CC838D92BD8F0E800112453 /* AccountView.swift in Sources */,
 				0CC838C12BD7B29500112453 /* User.swift in Sources */,
+				0CC838CF2BD8EF3100112453 /* MainView.swift in Sources */,
+				0CC838C72BD7CAD400112453 /* Badge.swift in Sources */,
 				0CC838BF2BD7B28B00112453 /* Activity.swift in Sources */,
 				0CC838962BD7B1FE00112453 /* MyDayView.swift in Sources */,
 				0CC838C52BD7B43400112453 /* MyDayViewModel.swift in Sources */,
+				0CC838D72BD8F0E200112453 /* CalendarView.swift in Sources */,
+				0CC838CB2BD8EA3F00112453 /* OfficeWorkout.swift in Sources */,
 				0CC838942BD7B1FE00112453 /* HabitsApp.swift in Sources */,
+				0CC838D12BD8EFAA00112453 /* ActiviesView.swift in Sources */,
+				0CC838C92BD8E3EC00112453 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
