@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct HabitsApp: App {
+    @StateObject var userData = UserViewModel()
+    
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environmentObject(userData)
                 
         }
     }

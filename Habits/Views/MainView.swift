@@ -13,6 +13,7 @@ struct MainView: View {
             MyDayView()
                 .tabItem {
                     Label("My day", systemImage: "medal.fill")
+                        .foregroundStyle(Color.red)
                 }
             ActiviesView()
                 .tabItem {
@@ -27,6 +28,10 @@ struct MainView: View {
                     Label("Account", systemImage: "person.crop.circle")
                 }
         }
+        .tint(.red)
+        .onAppear(perform: {
+            UITabBar.appearance().unselectedItemTintColor = .gray
+        })
     }
 }
 
