@@ -218,6 +218,7 @@ struct StreakView : View {
 
 
 
-//#Preview {
-//    MyDayView()
-//}
+#Preview {
+    MyDayView()
+        .environmentObject(UserViewModel())
+}

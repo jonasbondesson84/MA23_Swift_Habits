@@ -126,6 +126,7 @@ struct AddButton: ButtonStyle {
 
 #Preview {
     ActiviesView()
+        .environmentObject(UserViewModel())
 }
 
 
