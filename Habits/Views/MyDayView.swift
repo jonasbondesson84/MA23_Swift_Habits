@@ -9,25 +9,25 @@ import SwiftUI
 
 struct MyDayView: View {
     
-    var myDayViewModel = MyDayViewModel()
+    @EnvironmentObject var userData : UserViewModel
     
     var body: some View {
 
         NavigationStack {
             ZStack {
-                myDayViewModel.backgroundColor
+                AppColors.backgroundColor
                     .ignoresSafeArea()
 //                ScrollView {
                     VStack {
                         
-                        StreakView(vm: myDayViewModel)
+                        StreakView()
                             .padding(.top, 50)
                         
-                        BadgesView(vm: myDayViewModel)
+                        BadgesView()
                         
-                        TodaysActivitiesList(vm: myDayViewModel)
+                        TodaysActivitiesList()
                             
-                        OfficeWorkOutView(vm: myDayViewModel)
+                        OfficeWorkOutView()
                             
                         Spacer()
                         
@@ -46,7 +46,7 @@ struct MyDayView: View {
 }
 
 struct OfficeWorkOutView: View {
-    var vm: MyDayViewModel
+    @EnvironmentObject var userData: UserViewModel
     var body: some View {
         VStack {
             Text("OFFICE WORKOUT")
@@ -60,7 +60,7 @@ struct OfficeWorkOutView: View {
                 
             List {
                 
-                ForEach (vm.user.officeWorkOut) {workout in
+                ForEach (userData.user.officeWorkOut) {workout in
                     HStack {
                         Text(workout.name)
                             .foregroundColor(.white)
@@ -73,7 +73,7 @@ struct OfficeWorkOutView: View {
                     }
                 }
                 
-                .listRowBackground(vm.backgroundColor)
+                .listRowBackground(AppColors.backgroundColor)
             }
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
@@ -83,7 +83,7 @@ struct OfficeWorkOutView: View {
 
 struct TodaysActivitiesList: View {
     
-    var vm: MyDayViewModel
+    @EnvironmentObject var userData: UserViewModel
     var body: some View {
         VStack {
             Text("TODAYS ACTIVITIES")
@@ -97,9 +97,9 @@ struct TodaysActivitiesList: View {
                 .fontWeight(.bold)
             List {
                 
-                ForEach (vm.user.todaysActivities) { activity in
+                ForEach (userData.user.todaysActivities) { activity in
                     
-                    TodaysActivities(vm: vm, activity: activity)
+                    TodaysActivities(activity: activity)
                 }
                 .padding(.vertical, 2)
                 .listRowInsets(.init())
@@ -118,12 +118,12 @@ struct TodaysActivitiesList: View {
 
 
 struct TodaysActivities: View {
-    var vm: MyDayViewModel
+    @EnvironmentObject var userData: UserViewModel
     var activity: Activity
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 25.0)
-                .fill(vm.cardBackgroundColor)
+                .fill(AppColors.cardBackgroundColor)
             VStack {
                 HStack {
                     Image(systemName: activity.category.image)
@@ -145,16 +145,16 @@ struct TodaysActivities: View {
         }
         .frame(height: 100)
         .padding(.horizontal, 40)
-        .listRowBackground(vm.backgroundColor)
+        .listRowBackground(AppColors.backgroundColor)
     }
 }
 
 struct BadgesView: View {
-    var vm : MyDayViewModel
+    @EnvironmentObject var userData: UserViewModel
     var body: some View {
         ScrollView(.horizontal) {
             LazyHStack {
-                ForEach(vm.user.badges ) { badge in
+                ForEach(userData.user.badges ) { badge in
                     ZStack{
                         Image(badge.image)
                             .resizable()
@@ -169,7 +169,7 @@ struct BadgesView: View {
             
             
             .scrollContentBackground(.hidden)
-            .background(vm.backgroundColor)
+            .background(AppColors.backgroundColor)
         }
         .padding(.horizontal, 50)
         .frame(height: 100)
@@ -177,7 +177,7 @@ struct BadgesView: View {
 }
 
 struct StreakView : View {
-    var vm : MyDayViewModel
+    @EnvironmentObject var userData: UserViewModel
     var body: some View {
         ZStack {
             Circle()
@@ -218,6 +218,6 @@ struct StreakView : View {
 
 
 
-#Preview {
-    MyDayView()
-}
+//#Preview {
+//    MyDayView()
+//}

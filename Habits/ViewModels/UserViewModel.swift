@@ -8,11 +8,7 @@
 import Foundation
 import SwiftUI
 
-class MyDayViewModel: ObservableObject {
-    
-    let backgroundColor = Color(red: 18/256, green: 29/256, blue: 47/256)
-    let cardBackgroundColor = Color(red: 1/256, green: 165/256, blue: 126/256)
-    let cardShadowColor = Color(red: 182/256, green: 248/256, blue: 219/256)
+class UserViewModel: ObservableObject {
     
     @Published var activities = [Activity]()
     @Published var user = User(name: "Jonas", imageUrl: nil, streak: 0)
