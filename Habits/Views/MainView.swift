@@ -7,8 +7,14 @@
 
 import SwiftUI
 
+
 struct MainView: View {
+    
+    @EnvironmentObject var userData : UserViewModel
+    
     var body: some View {
+        
+        
         TabView {
             MyDayView()
                 .tabItem {
@@ -31,6 +37,7 @@ struct MainView: View {
         .tint(.red)
         .onAppear(perform: {
             UITabBar.appearance().unselectedItemTintColor = .gray
+            userData.checkSignIn()
         })
     }
 }

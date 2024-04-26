@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
-struct Activity: Identifiable {
+struct Activity: Identifiable, Decodable, Encodable {
+    @DocumentID var docID : String?
     var id = UUID()
     var name : String
     var date : Date
@@ -15,7 +17,7 @@ struct Activity: Identifiable {
     var end : Date?
     var distance : Double?
     var repetitions : Double?
-    var officeWorkout : Bool
+//    var officeWorkout : Bool
     var repeating : Bool
     var category : Category
 }
