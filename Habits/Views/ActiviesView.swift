@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ActiviesView: View {
     @EnvironmentObject var userData: UserViewModel
+    @State var showAddActivity = false
+    @State var showAddOfficeWorkout = false
     
     
     var body: some View {
@@ -16,18 +18,152 @@ struct ActiviesView: View {
             AppColors.backgroundColor
                 .ignoresSafeArea()
             VStack {
-                MyActivityList()
+                MyActivityList(showSheet: $showAddActivity)
                     .padding(.bottom, 30)
-                MyOfficeWorkoutList()
+                MyOfficeWorkoutList(showSheet: $showAddOfficeWorkout)
                     .padding(.bottom, 30)
             }
         
+        }
+        .sheet(isPresented: $showAddActivity, content: {
+            AddActivitySheet(showSheet: $showAddActivity)
+                .presentationBackground(.background)
+                .presentationDetents([.medium])
+        }
+        )
+        .sheet(isPresented: $showAddOfficeWorkout, content: {
+            AddOfficeWorkoutSheet(showsheet: $showAddOfficeWorkout)
+                .presentationBackground(.background)
+                .presentationDetents([.medium])
+        })
+    }
+}
+
+
+
+struct AddActivitySheet: View {
+    @Binding var showSheet: Bool
+    @State var name: String = ""
+    @State var date: Date = .now
+    @State var category : Category? = nil
+    @State var recurrent : Bool = false
+    @State var recurrentDays: Int = 1
+    
+    @EnvironmentObject var userData : UserViewModel
+    
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            AppColors.sheetBackgroundColor
+                .ignoresSafeArea()
+            VStack {
+                Text("Add activity")
+                    .font(.system(size: 22))
+                    .foregroundColor(.white)
+                    .padding(.top, 10)
+                Form {
+                    LabeledContent("Activity name") {
+                        TextField("", text: $name)
+                    }
+                    LabeledContent("Date/Time") {
+                        DatePicker("", selection: $date)
+                    }
+                    LabeledContent("Category") {
+                        Picker("", selection: $category) {
+                            ForEach(userData.categories) { category in
+                                Text("\(category.name)")
+                            }
+                        }
+                        .pickerStyle(.menu)
+                    }
+                    LabeledContent("Recurrent") {
+                        Toggle(isOn: $recurrent) {
+                            
+                        }
+                    }
+                    LabeledContent("Recurrent days") {
+                        Stepper(value: $recurrentDays, in :1...7) {
+                            Text("\(recurrentDays)")
+                        }
+                    }
+                    .opacity(recurrent ? 1: 0)
+                    HStack {
+                        Button {
+                            if let category = category {
+                                let newActivity = Activity(name: name, date: date, repeating: recurrent, category: category)
+                                userData.saveActivityToFireStore(activity: newActivity)
+                                showSheet = false
+                            }
+                        } label: {
+                            Text("Save")
+                        }
+                        Spacer()
+                        Button {
+                            showSheet = false
+                        } label: {
+                            Text("Cancel")
+                        }
+                    }
+                }
+                .scrollContentBackground(.hidden)
+            }
+        }
+        .onAppear() {
+            userData.createCategories()
+            category = userData.categories.first
+        }
+    }
+}
+
+struct AddOfficeWorkoutSheet: View {
+    @Binding var showsheet: Bool
+    @EnvironmentObject var userData : UserViewModel
+    
+    @State var name: String = ""
+    @State var repeatWorkout: Double = 1.0
+    
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            AppColors.sheetBackgroundColor
+                .ignoresSafeArea()
+            VStack {
+                Text("Add Office Workout")
+                    .font(.system(size: 22))
+                    .foregroundColor(.white)
+                    .padding(.top, 10)
+                Form {
+                    LabeledContent("Workout name:") {
+                        TextField("", text: $name)
+                    }
+                    LabeledContent("Repeat every: \(repeatWorkout, specifier: "%.1f") hour") {
+                        Stepper("", value: $repeatWorkout, in: 0.5...8, step: 0.5)
+                    }
+                    
+                    HStack {
+                        Button {
+                            let newWorkout = OfficeWorkout(name: name, repeatTimeHours: repeatWorkout)
+                            userData.saveOfficeWorkoutToFireStore(workout: newWorkout)
+                            showsheet = false
+                            
+                        } label: {
+                            Text("Save")
+                        }
+                        Spacer()
+                        Button {
+                            showsheet = false
+                        } label: {
+                            Text("Cancel")
+                        }
+                    }
+                }
+                .scrollContentBackground(.hidden)
+            }
         }
     }
 }
 
 struct MyOfficeWorkoutList: View {
     @EnvironmentObject var userData: UserViewModel
+    @Binding var showSheet: Bool
     var body: some View {
         Text("My Office Workouts")
             .foregroundColor(.white)
@@ -58,7 +194,8 @@ struct MyOfficeWorkoutList: View {
         .listStyle(.plain)
         
         Button(action: {
-            userData.saveOfficeWorkoutToFireStore(workout: OfficeWorkout(name: "Strech", repeatTimeHours: 1.5))
+            showSheet = true
+//            userData.saveOfficeWorkoutToFireStore(workout: OfficeWorkout(name: "Strech", repeatTimeHours: 1.5))
         }, label: {
             Label("Add Office Workout", systemImage: "plus")
         })
@@ -69,6 +206,7 @@ struct MyOfficeWorkoutList: View {
 
 struct MyActivityList: View {
     @EnvironmentObject var userData: UserViewModel
+    @Binding var showSheet: Bool
     
     var body: some View {
         Text("My Activities")
@@ -98,7 +236,8 @@ struct MyActivityList: View {
         .scrollContentBackground(.hidden)
         
         Button(action: {
-            userData.saveActivityToFireStore(activity: Activity(name: "Running 5 km", date: .now,  repeating: true, category: Category(name: "Running", image: "figure.run")))
+            showSheet = true
+//            userData.saveActivityToFireStore(activity: Activity(name: "Running 5 km", date: .now,  repeating: true, category: Category(name: "Running", image: "figure.run")))
         }, label: {
             Label("Add activity", systemImage: "plus")
         })

@@ -13,7 +13,7 @@ import Firebase
 class UserViewModel: ObservableObject {
     
     @Published var activities = [Activity]()
-    @Published var user = User(name: "Jonas", imageUrl: nil, streak: 0)
+    @Published var user = User(name: "Jonas", imageUrl: nil, streak: 0)  //Kolla med david varför den inte uppdateras i listan?
     @Published var categories = [Category]()
     let db = Firestore.firestore()
     let ACTIVITY = "activity"
@@ -23,6 +23,7 @@ class UserViewModel: ObservableObject {
     
     init() {
 //        creatDummyData()
+        createCategories()
     }
     
     func checkSignIn() {
@@ -108,6 +109,7 @@ class UserViewModel: ObservableObject {
         guard let userID = self.user.uid else {return}
         do {
             try db.collection("users").document(userID).collection(ACTIVITY).addDocument(from: activity)
+            print("Saved activity")
         } catch {
             print("Error writing to Firestore")
         }
@@ -124,6 +126,7 @@ class UserViewModel: ObservableObject {
     
     
     func createCategories() {
+        categories.removeAll()
         let running = Category(name: "Runnning", image: "figure.run")
         categories.append(running)
         let swimming = Category(name: "Swimming", image: "figure.pool.swim")

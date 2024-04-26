@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Category: Identifiable, Decodable, Encodable {
+struct Category: Identifiable, Decodable, Encodable, Hashable {
     var id = UUID()
     let name : String
     let image : String
