@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct OfficeWorkout: Identifiable, Decodable, Encodable {
+struct OfficeWorkout: Identifiable {
     var id = UUID()
     var name: String
     var repeatTimeHours: Double
