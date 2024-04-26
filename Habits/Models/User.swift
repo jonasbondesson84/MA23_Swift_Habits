@@ -7,16 +7,15 @@
 
 import Foundation
 
-class User: ObservableObject {
-    var uid : String?
+class User {
     var name: String
 //    var sex: Int //0 = Female, 1 = Male, 2 = Other
     var imageUrl : String?
     var streak : Int
     var badges = [Badge]()
-    @Published var activities = [Activity]()
-    @Published var todaysActivities = [Activity]()
-    @Published var officeWorkOut = [OfficeWorkout]()
+    var activities = [Activity]()
+    var todaysActivities = [Activity]()
+    var officeWorkOut = [OfficeWorkout]()
     
     init(name: String, imageUrl: String?, streak: Int, badges: [Badge] = [Badge]()) {
         self.name = name
