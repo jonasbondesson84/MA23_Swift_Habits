@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 struct Category: Identifiable, Decodable, Encodable, Hashable {
     var id = UUID()
     let name : String
