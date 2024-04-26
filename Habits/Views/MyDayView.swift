@@ -6,39 +6,50 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct MyDayView: View {
     
     @EnvironmentObject var userData : UserViewModel
+    var auth = Auth.auth()
+    
     
     var body: some View {
+        
 
         NavigationStack {
             ZStack {
                 AppColors.backgroundColor
                     .ignoresSafeArea()
-//                ScrollView {
-                    VStack {
-                        
-                        StreakView()
-                            .padding(.top, 50)
-                        
-                        BadgesView()
-                        
-                        TodaysActivitiesList()
-                            
-                        OfficeWorkOutView()
-                            
-                        Spacer()
-                        
-                        
-//                        TodaysActivities(vm: myDayViewModel)
-                        
-                        
-                    }
+                //                ScrollView {
+                VStack {
+                    
+                    StreakView()
+                        .padding(.top, 50)
+                    
+                    BadgesView()
+                    
+                    TodaysActivitiesList()
+                    
+                    OfficeWorkOutView()
+                    
+                    Spacer()
+                    
+                    
+                    //                        TodaysActivities(vm: myDayViewModel)
+                    
+                    
                 }
+                
             }
-        
+            .navigationBarItems(trailing: Button(action: {
+                userData.signIn()
+            }, label: {
+                Image(systemName: "pencil")
+                    .foregroundColor(.white)
+            }))
+            
+        }
             
 //        }
     }

@@ -58,7 +58,7 @@ struct MyOfficeWorkoutList: View {
         .listStyle(.plain)
         
         Button(action: {
-            
+            userData.saveOfficeWorkoutToFireStore(workout: OfficeWorkout(name: "Strech", repeatTimeHours: 1.5))
         }, label: {
             Label("Add Office Workout", systemImage: "plus")
         })
@@ -80,7 +80,7 @@ struct MyActivityList: View {
             .fontWeight(.bold)
         
         List {
-            ForEach (userData.activities) { activity in
+            ForEach (userData.user.activities) { activity in
                 HStack {
                     Text(activity.name)
                         .foregroundColor(.white)
@@ -98,7 +98,7 @@ struct MyActivityList: View {
         .scrollContentBackground(.hidden)
         
         Button(action: {
-            
+            userData.saveActivityToFireStore(activity: Activity(name: "Running 5 km", date: .now,  repeating: true, category: Category(name: "Running", image: "figure.run")))
         }, label: {
             Label("Add activity", systemImage: "plus")
         })
@@ -134,7 +134,7 @@ struct AddButton: ButtonStyle {
 
 
 struct ActivitiesView: View {
-    @EnvironmentObject var user: UserViewModel
+    @EnvironmentObject var userData: UserViewModel
     
     var body: some View {
         Text("My Activities")
@@ -145,7 +145,7 @@ struct ActivitiesView: View {
             .padding(.leading, 30)
             .fontWeight(.bold)
         List {
-            ForEach (user.activities) { activity in
+            ForEach (userData.user.activities) { activity in
                 Text(activity.name)
                     .foregroundColor(.white)
             }
